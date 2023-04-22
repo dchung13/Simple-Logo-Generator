@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Shape = require('./lib/shapes.js');
 const Circle = require('./lib/circle.js');
 const Triangle = require('./lib/triangle.js');
 const Square = require('./lib/square.js');
@@ -66,7 +65,7 @@ const colorInputValidation = async (input) => {
                         break;
                 } return logoShape;
             })
-            
+
         .then ((logoShape) => {
                 fs.writeFile('./examples/logo.svg', logoShape, (err) => {
                     err ? console.error() : console.log('Genearted logo.svg!');
