@@ -17,7 +17,7 @@ const colorInputValidation = async (input) => {
 }
 
     inquirer
-        .prompt( [
+        .prompt([
                 {
                     name: 'logoText',
                     type: 'input',
@@ -49,6 +49,27 @@ const colorInputValidation = async (input) => {
                 }
             ])
         
-        .then ((responses) => {
-            fs.writeFile(`${inquirer.responses.shape}.svg`, inquirer.responses);
-        });
+        .then ((answers) => {
+            let logoShape;
+                switch (answers.shape) {
+                    case 'circle' :
+                        logoShape = new Circle(answers.shapeColor.trim(), answers.LogoText.trim(), answers.textColor.trim());
+                        renderCircle();
+                        break;
+                    case 'triangle' :
+                        logoShape = new Triangle(answers.shapeColor.trim(), answers.LogoText.trim(), answers.textColor.trim());
+                        renderTriangle();
+                        break;
+                    case 'square' :
+                        logoShape = new Square(answers.shapeColor.trim(), answers.LogoText.trim(), answers.textColor.trim());
+                        renderSquare();
+                        break;
+                } return logoShape;
+            })
+            
+        .then ((logoShape) => {
+                fs.writeFile('./examples/logo.svg', logoShape, (err) => {
+                    err ? console.error() : console.log('Genearted logo.svg!');
+                });
+            });
+        
