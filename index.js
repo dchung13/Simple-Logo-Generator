@@ -52,15 +52,15 @@ const colorInputValidation = async (input) => {
             let logoShape;
                 switch (answers.shape) {
                     case 'circle' :
-                        logoShape = new Circle(answers.shapeColor.trim(), answers.LogoText.trim(), answers.textColor.trim());
+                        logoShape = new Circle(answers.shapeColor.trim(), answers.logoText.trim(), answers.textColor.trim());
                         renderCircle();
                         break;
                     case 'triangle' :
-                        logoShape = new Triangle(answers.shapeColor.trim(), answers.LogoText.trim(), answers.textColor.trim());
+                        logoShape = new Triangle(answers.shapeColor.trim(), answers.logoText.trim(), answers.textColor.trim());
                         renderTriangle();
                         break;
                     case 'square' :
-                        logoShape = new Square(answers.shapeColor.trim(), answers.LogoText.trim(), answers.textColor.trim());
+                        logoShape = new Square(answers.shapeColor.trim(), answers.logoText.trim(), answers.textColor.trim());
                         renderSquare();
                         break;
                 } return logoShape;
