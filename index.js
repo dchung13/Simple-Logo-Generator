@@ -53,21 +53,21 @@ const colorInputValidation = async (input) => {
                 switch (answers.shape) {
                     case 'circle' :
                         logoShape = new Circle(answers.shapeColor.trim(), answers.logoText.trim(), answers.textColor.trim());
-                        renderCircle();
+                        var renderedShape = logoShape.renderCircle();
                         break;
                     case 'triangle' :
                         logoShape = new Triangle(answers.shapeColor.trim(), answers.logoText.trim(), answers.textColor.trim());
-                        renderTriangle();
+                        var renderedShape = logoShape.renderTriangle();
                         break;
                     case 'square' :
                         logoShape = new Square(answers.shapeColor.trim(), answers.logoText.trim(), answers.textColor.trim());
-                        renderSquare();
+                        var renderedShape = logoShape.renderSquare();
                         break;
-                } return logoShape;
+                } return renderedShape;
             })
 
-        .then ((logoShape) => {
-                fs.writeFile('./examples/logo.svg', logoShape, (err) => {
+        .then ((renderedShape) => {
+                fs.writeFile('./examples/logo.svg', renderedShape, (err) => {
                     err ? console.error() : console.log('Genearted logo.svg!');
                 });
             });
